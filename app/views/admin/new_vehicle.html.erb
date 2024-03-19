@@ -1,0 +1,25 @@
+<%= form_with model: Vehicle, url: admin_nv_path, data: { turbo: false }  do |form| %>
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :brand %>
+        <%= form.text_field :brand, class:"form-control", placeholder:"Porsche"%>
+    </div>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :model %>
+        <%= form.text_field :model, class:"form-control", placeholder:"GT3 RS"%>
+    </div>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :year %>
+        <%= form.text_field :year, class:"form-control", placeholder:"2024"%>
+    </div>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :price_per_day %>
+        <%= form.text_field :price_per_day, class:"form-control", placeholder:"10000"%>
+    </div>
+
+    <div class="my-3">
+        <%= form.submit "Add Vehicle", class:"btn btn-lg btn-block btn-primary w-100"%>
+    </div>
+<% end %>

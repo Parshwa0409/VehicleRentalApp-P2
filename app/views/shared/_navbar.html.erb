@@ -1,0 +1,16 @@
+<div class="navbar">
+    <h1 id="brand-text"><%= link_to "Rent-Wheels", root_path %></h1>
+
+    <ul id="nav-list">
+        <% if user_signed_in? %>
+            <li><%= link_to "Active Agreement", root_path, class:"nav-items"%></li>
+            <li><%= link_to "Vehicle's", root_path, class:"nav-items"%></li>
+            <%# <li><%= link_to "Search Vehicle", root_path, class:"nav-items"</li>  try to do search & all vehicles in one page %>
+            <li><%= link_to "History", root_path, class:"nav-items"%></li>
+            <li><%= link_to "My Profile", user_profile_path, class:"nav-items"%></li>
+        <% else %>
+            <li><%= link_to "Sign-In", new_user_session_path, class:"nav-items"%></li>
+            <li><%= link_to "Sign-Up", new_user_registration_path, class:"nav-items"%></li>
+        <% end %>
+    </ul>
+</div>

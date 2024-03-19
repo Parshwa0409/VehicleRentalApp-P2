@@ -10,23 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_19_115911) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_19_150531) do
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
   create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "cardholder_name"
     t.string "card_number"
     t.string "cvv"
     t.date "expiry_date"
+    t.bigint "rental_agreement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rental_agreement_id"], name: "index_payments_on_rental_agreement_id"
   end
 
   create_table "rental_agreements", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.integer "total_cost"
-    t.boolean "acitve"
+    t.boolean "acitve", default: false
+    t.bigint "user_id"
+    t.bigint "vehicle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rental_agreements_on_user_id"
+    t.index ["vehicle_id"], name: "index_rental_agreements_on_vehicle_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -39,6 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_115911) do
     t.string "address"
     t.string "phone_no"
     t.boolean "is_renting", default: false
+    t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -50,10 +85,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_115911) do
     t.string "model"
     t.integer "year"
     t.integer "price_per_day"
-    t.string "photo"
-    t.boolean "is_rented"
+    t.string "brand_logo"
+    t.boolean "is_rented", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "payments", "rental_agreements"
+  add_foreign_key "rental_agreements", "users"
+  add_foreign_key "rental_agreements", "vehicles"
 end

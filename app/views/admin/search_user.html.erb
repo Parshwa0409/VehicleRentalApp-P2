@@ -1,0 +1,18 @@
+<%= form_for :search_user, url: search_u_path, data: { turbo: false }  do |form| %>
+
+<div class="row d-flex align-items-end py-2">
+    <div class="col-9 my-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, class:"form-control", placeholder:"j.doe@gmail.org"%>
+    </div>
+
+    <div class="col-3 my-3 text-center">
+        <%= form.submit "Search User", class:"btn btn-primary w-100"%>
+    </div>
+</div>
+<% end %>
+
+
+<% if !@user.nil? %>
+    <%= render partial:"admin/user", locals: {user:@user}%>
+<% end %>

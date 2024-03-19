@@ -1,15 +1,57 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  margin: 0;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+/* ------------------------------------------------------------ COMMON ------------------------------------------------------------ */
+
+:root {
+  --black-color: #31363f;
+  --white-color: #eeeeee;
+  --turquoise-color: #76abae;
+}
+
+.container {
+  padding-bottom: 1rem;
+}
+
+body {
+  height: 100vh;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+/* ------------------------------------------------------------ NAVBAR ------------------------------------------------------------ */
+
+div.navbar {
+  background-color: var(--black-color);
+  color: var(--white-color);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 1rem;
+  margin-bottom: 2rem;
+}
+
+#brand-text {
+  font-weight: bold;
+}
+
+#nav-list {
+  list-style-type: none;
+  margin-top: auto;
+
+  display: flex;
+}
+
+.nav-items {
+  font-size: 1.15rem;
+  margin: auto 1rem;
+  font-weight: bold;
+}
