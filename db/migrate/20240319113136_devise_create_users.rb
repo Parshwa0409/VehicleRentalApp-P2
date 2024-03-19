@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string :address
       t.string :phone_no
       t.boolean :is_renting, default: false
+      t.boolean :is_admin, default: false
 
       t.timestamps null: false
     end

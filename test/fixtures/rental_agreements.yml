@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: MyString
+  end_date: MyString
+  total_cost: 1
+  acitve: false
+
+two:
+  start_date: MyString
+  end_date: MyString
+  total_cost: 1
+  acitve: false
