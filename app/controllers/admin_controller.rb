@@ -4,6 +4,12 @@ before_action :authenticate_user!
     def index
     end
 
+    # CUSTOMER - CRUD
+    def customers
+        @all_users = User.where(:is_admin,false)
+        p @all_users
+    end
+
     # VEHICLE - CRUD
     def show_vehicles
         @all_vehicles = Vehicle.all.paginate(page: params[:page])

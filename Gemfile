@@ -3,7 +3,10 @@ source "https://rubygems.org"
 ruby "3.2.2"
 
 # external gems
-gem 'will_paginate', '~> 3.3.0'
+gem "will_paginate", '~> 3.3.0'
+gem 'chartkick', '~> 5.0', '>= 5.0.6'
+gem 'groupdate', '~> 2.5', '>= 2.5.2'
+
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

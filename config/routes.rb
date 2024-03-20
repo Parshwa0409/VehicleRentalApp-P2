@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   get "admin/edit_vehicle", to:"admin#edit_vehicle"
   post "admin/update_vehicle", to:"admin#update_vehicle"
   delete "admin/destroy_vehicle", to:"admin#destroy_vehicle"
+
+  # RENTAL AGREEMENT
+  get "admin/insights", to: "admin#rental_insights"
+
+  # USERS / CUSTOMERS
+  get "admin/users", to:"admin#customers"
   
 
 
