@@ -1,5 +1,0 @@
-<% User.all.each do |user| %>
-    <%if user.email != "admin@vra.org"%>
-        <%= render partial:"admin/user", locals: {user:user}%>
-    <% end %>
-<% end %>

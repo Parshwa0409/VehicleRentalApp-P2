@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   get "admin/insights", to: "admin#rental_insights"
 
   # USERS / CUSTOMERS
-  get "admin/users", to:"admin#customers"
-  
+  get "admin/customers", to:"admin#customers"
+  get "admin/search_customer", to:"admin#customers"
+  post "admin/search_customer", to:"admin#search_customer"
 
 
   root 'home#index'

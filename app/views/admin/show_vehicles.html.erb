@@ -26,9 +26,7 @@
     <div class="no-vehicle-msg">
         <h1 class="no-vehicle-msg">VEHICLE DATABASE EMPTY, PLEASE ADD FEW VEHICLES!!!</h1>
         <br><hr><br>
-        <h1 class="no-vehicle-msg">YOU CAN CLICK ON THIS BUTTON BELOW TO ADD A NEW VEHICLE</h1>
-        <br>
-        <%= button_to "Add Vehicle", admin_vehicles_path ,method: :get,class:"btn btn-lg btn-block btn-success w-100" %>
+        <h1 class="no-vehicle-msg">YOU CAN CLICK ON THE ADD BUTTON AT THE TOP, TO ADD A NEW VEHICLE</h1>
     </div>
 <% else %>
     <% @all_vehicles.each do |vehicle| %>

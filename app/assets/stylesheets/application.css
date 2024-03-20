@@ -172,3 +172,14 @@ div.navbar {
 .apple_pagination a:focus {
   text-decoration: underline;
 }
+
+/* ------------------------------------------------------------ USER ------------------------------------------------------------ */
+
+.user-div {
+  border: 1px solid black;
+  border-radius: 1.5rem;
+  box-shadow: 0.2rem 0.2rem 0.5rem black;
+
+  margin: 2rem 0;
+  padding: 1.5rem;
+}

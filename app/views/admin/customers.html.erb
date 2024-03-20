@@ -1,0 +1,34 @@
+<%= form_for :search_customer, url: admin_search_customer_path, data: { turbo: false }  do |form| %>
+
+<div class="row d-flex align-items-end py-2">
+    <div class="col-5 my-3">
+        <%= form.label :email %>
+        <%= form.text_field :email, class:"form-control", placeholder:"j.doe@plansource.com"%>
+    </div>
+
+    <div class="col-5 my-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class:"form-control", placeholder:"John Doe"%>
+    </div>
+
+    <div class="col-2 my-3 text-center">
+        <%= form.submit "Search Customer", class:"btn btn-primary"%>
+    </div>
+</div>
+<% end %>
+
+<br><hr><br>
+
+<% if @all_users.nil? %>
+<% else %>
+    <%@all_users.each do |user|%>
+        <%= render partial:"admin/user", locals: {user:user}%>
+    <% end %>
+<% end %>
+
+<div class="apple_pagination ">
+    <div class="page_info">
+        <%= page_entries_info @all_users %>
+    </div>
+    <%= will_paginate @all_users, :container => false %>
+</div>

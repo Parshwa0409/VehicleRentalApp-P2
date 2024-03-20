@@ -6,8 +6,24 @@ before_action :authenticate_user!
 
     # CUSTOMER - CRUD
     def customers
-        @all_users = User.where(:is_admin,false)
-        p @all_users
+        @all_users = User.where(:is_admin => false).paginate(page: params[:page])
+    end
+
+    def search_customer
+        name = get_user_search_params[:name]
+        email = get_user_search_params[:email]
+
+        if name.empty? && email.empty?
+            show_vehicles()
+        elsif !name.empty? && !email.empty?
+            @all_users =  User.where(is_admin:false, name:name, email:email).paginate(page: params[:page])
+        elsif !email.empty?
+            @all_users =  User.where(is_admin:false, email:email).paginate(page: params[:page])
+        elsif !name.empty?
+            @all_users =  User.where(is_admin:false, name:name).paginate(page: params[:page])
+        end
+
+        render :customers
     end
 
     # VEHICLE - CRUD
@@ -16,7 +32,6 @@ before_action :authenticate_user!
     end 
 
     def new_vehicle
-
     end
 
     def create_vehicle
@@ -30,8 +45,8 @@ before_action :authenticate_user!
     end
 
     def search_vehicle
-        brand = get_search_params[:brand]
-        model = get_search_params[:model]
+        brand = get_vehicle_search_params[:brand]
+        model = get_vehicle_search_params[:model]
 
         if brand.empty? && model.empty?
             show_vehicles()
@@ -48,18 +63,20 @@ before_action :authenticate_user!
     end
 
     def edit_vehicle
+        session[:v_id] = params[:id]
     end
 
     def update_vehicle
-        # @vehicle = Vehicle.find_by(id: session[:vehicle_id])
-        p params[:id]
-        # if @vehicle.present?
-        #   @vehicle.update.update_column(:brand,params[:brand]) if params[:brand] !=""
-        #   @vehicle.update.update_column(:model,params[:model]) if params[:model] != ""
-        #   @vehicle.update.update_column(:year,params[:year]) if params[:year] !=""
-        #   @vehicle.update.update_column(:price_per_day,params[:price_per_day]) if params[:price_per_day] !=""
-        #   @vehicle.update.update_column(:brand_logo,params[:brand_logo]) if !params[:brand_logo].nil?
-        # end
+        vehicle_to_edit = Vehicle.find_by(id:session[:v_id])
+        parameters = get_vehicle_params()
+        if vehicle_to_edit.present?
+            vehicle_to_edit.update_column(:brand,parameters[:brand]) if parameters[:brand] !=""
+            vehicle_to_edit.update_column(:model,parameters[:model]) if parameters[:model] != ""
+            vehicle_to_edit.update_column(:year,parameters[:year]) if parameters[:year] !=""
+            vehicle_to_edit.update_column(:price_per_day,parameters[:price_per_day]) if parameters[:price_per_day] !=""
+            vehicle_to_edit.update_column(:brand_logo,parameters[:brand_logo]) if !parameters[:brand_logo].nil?
+        end
+        redirect_to admin_vehicles_path
     end
 
     def destroy_vehicle
@@ -76,7 +93,7 @@ before_action :authenticate_user!
         params.require(:vehicle).permit(:brand,:model,:year,:brand_logo,:price_per_day)
     end
 
-    def get_search_params
+    def get_vehicle_search_params
         return params.require(:search_vehicle).permit(:brand, :model)
     end
 
@@ -84,5 +101,8 @@ before_action :authenticate_user!
         params.permit(:id)
     end
 
-  end
-  
+    def get_user_search_params
+        return params.require(:search_customer).permit(:name, :email)
+    end
+
+end

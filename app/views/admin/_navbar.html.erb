@@ -2,9 +2,9 @@
   <h1 id="brand-text"><%= link_to "Rent-Wheels", root_path %></h1>
 
   <ul id="nav-list">
-    <li><%= link_to "My Customers", admin_users_path, class:"nav-items"%></li>
+    <li><%= link_to "My Customers", admin_customers_path, class:"nav-items"%></li>
     <li><%= link_to "My Vehicles", admin_vehicles_path, class:"nav-items"%></li>
     <li><%= link_to "Insights", admin_insights_path , class:"nav-items"%></li>
-    <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete , class:"nav-items btn btn-danger"%></li>
+    <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete , class:"nav-items "%></li>
   </ul>
 </div>
