@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :get_active_user
+    helper_method :get_active_user, :get_vehicle
 
     protect_from_forgery with: :exception
 
@@ -21,5 +21,8 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def get_vehicle(vehiicle_id)
+        return Vehicle.find_by(id:vehiicle_id)
+    end
 
 end

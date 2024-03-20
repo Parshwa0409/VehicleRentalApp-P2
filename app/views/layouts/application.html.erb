@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Var2</title>
+    <title>RentWheels - 🏎️</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,8 +13,7 @@
   </head>
 
   <body>
-
-    <% if user_signed_in? && current_user.is_admin%>
+    <% if user_signed_in? && current_user.is_admin %>
       <%= render partial:"admin/navbar"%>
     <% else %>
       <%= render partial:"shared/navbar"%>

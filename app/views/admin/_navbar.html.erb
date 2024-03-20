@@ -2,10 +2,8 @@
   <h1 id="brand-text"><%= link_to "Rent-Wheels", root_path %></h1>
 
   <ul id="nav-list">
-    <li><%= link_to "Customers", root_path, class:"nav-items"%></li>
-    <li><%= link_to "Search Customer", root_path, class:"nav-items"%></li>
-    <li><%= link_to "My Vehicles", root_path, class:"nav-items"%></li>
-    <li><%= link_to "Add New Vehicle", root_path, class:"nav-items"%></li>
+    <li><%= link_to "My Customers", root_path, class:"nav-items"%></li>
+    <li><%= link_to "My Vehicles", admin_vehicles_path, class:"nav-items"%></li>
     <li><%= link_to "Insights", root_path , class:"nav-items"%></li>
     <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete , class:"nav-items btn btn-danger"%></li>
   </ul>
