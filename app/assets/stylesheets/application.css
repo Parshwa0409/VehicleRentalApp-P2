@@ -183,3 +183,36 @@ div.navbar {
   margin: 2rem 0;
   padding: 1.5rem;
 }
+
+/* ------------------------------------------------------------ AGREEMENTS ------------------------------------------------------------ */
+.rental-agreement {
+  border: 1px solid black;
+  border-radius: 1rem;
+  box-shadow: 0.25rem 0.25rem black;
+
+  padding: 1rem;
+}
+
+.rental-agreement > div.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rental-agreement > div.content > h1 {
+  margin: 1rem 0;
+}
+
+.rental-agreement > div.content > .agreement-vehicle-img {
+  width: 75%;
+  border-radius: 1rem;
+  box-shadow: 0.25rem 0.25rem black;
+}
+
+#great-job-img {
+  width: 90%;
+  aspect-ratio: 16/9;
+  border-radius: 1rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem black;
+  margin: 1rem 0;
+}

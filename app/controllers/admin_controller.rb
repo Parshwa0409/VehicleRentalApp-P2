@@ -14,7 +14,7 @@ before_action :authenticate_user!
         email = get_user_search_params[:email]
 
         if name.empty? && email.empty?
-            show_vehicles()
+            customers()
         elsif !name.empty? && !email.empty?
             @all_users =  User.where(is_admin:false, name:name, email:email).paginate(page: params[:page])
         elsif !email.empty?

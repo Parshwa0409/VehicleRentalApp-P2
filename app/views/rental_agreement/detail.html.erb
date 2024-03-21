@@ -1,0 +1,15 @@
+<% if @agreement.nil? %>
+    <h1>Record of this agreement not found!</h1>
+<% else %>
+    <h1>You rented a '<%= @agreement.vehicle.brand%> <%= @agreement.vehicle.year %> - <%= @agreement.vehicle.model %>'</h1>
+    <br/>
+    <h1>The vehicle was rented from '<%= @agreement.start_date %>' to '<%= @agreement.end_date %>'</h1>
+    <br/>
+    <h1>The total cost for '<%= (@agreement.end_date - @agreement.start_date).to_i %> Days' is '$<%= @agreement.total_cost %>' </h1>
+    <br/>
+    <h1>The payment was done by '<%= @agreement.payment.cardholder_name %>'</h1>
+    <br/>
+    <%= button_to "Go Back", all_agreements_path, method: :get ,class:"btn btn-lg btn-success w-100" %>
+    <%# add a download button to download the details %>
+    
+<% end %>

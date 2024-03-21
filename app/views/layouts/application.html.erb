@@ -14,12 +14,15 @@
   </head>
 
   <body>
+
     <% if user_signed_in? && current_user.is_admin %>
       <%= render partial:"admin/navbar"%>
     <% else %>
       <%= render partial:"shared/navbar"%>
     <% end %>
+
     <div class="container">
+      <%= render partial:"shared/flash"%>
       <%= yield %>
     </div>
 

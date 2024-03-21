@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def get_vehicle(vehiicle_id)
-        return Vehicle.find_by(id:vehiicle_id)
+    def get_vehicle(vehicle_id)
+        return Vehicle.find_by(id:vehicle_id)
     end
 
 end

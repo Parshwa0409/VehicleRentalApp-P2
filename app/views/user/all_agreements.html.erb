@@ -1,0 +1,12 @@
+<% if @history.empty? %>
+    <h1 class="text-center">Great news! You haven't rented any vehicles yet. We're excited for you to experience our services! Feel free to explore and rent vehicles whenever you're ready. We're here to make your journey enjoyable and convenient.</h1>
+<% else %>
+    <%@history.each do |agreement|%>
+        <div class="rental-agreement my-3">
+            <%= render partial:"shared/rental_agreement", locals:{ vehicle: agreement.vehicle }%>
+            <div class="text-center">
+                <%= button_to "Details", agreement_detail_path, params: { id: agreement.id } ,method: :get ,class:"btn btn-lg btn-success w-75" %>
+            </div>
+        </div>
+    <% end %>
+<% end %>

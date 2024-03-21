@@ -1,8 +1,4 @@
-<%= button_to "Add New Vehicle", admin_new_vehicle_path, method: :get, class:"btn btn-lg btn-success w-100"%>
-<br>
-<hr>
-<h1 class="text-center font-weight-bold">Seach / View All Vehicles</h1>
-<%= form_for :search_vehicle, url: admin_search_vehicle_path, data: { turbo: false }  do |form| %>
+<%= form_for :search_vehicle, url: search_vehicle_path, data: { turbo: false }  do |form| %>
 
 <div class="row d-flex align-items-end py-2">
     <div class="col-5 my-3">
@@ -23,8 +19,9 @@
 
 
 <% if @all_vehicles.empty? %>
-    <div class="no-vehicle-msg">
-        <h1 class="no-vehicle-msg">YOU CAN CLICK ON THE ADD BUTTON AT THE TOP, TO ADD A NEW VEHICLE</h1>
+    <div class="no-vehicle-msg my-3">
+        <h1 class="no-vehicle-msg">Rental of vehicles through our services is still a work in progress. Thank you for patience.</h1>
+        <br><hr><br>
     </div>
 <% else %>
     <% @all_vehicles.each do |vehicle| %>
@@ -37,8 +34,7 @@
                 </div>
             </div>
             <div class="button-content">
-                <%= button_to "Edit", admin_edit_vehicle_path , :method => :get, params: { id: vehicle.id }, class:"btn btn-lg btn-success w-100" %>
-                <%= button_to "Delete", admin_destroy_vehicle_path , :method => :delete, params: { id: vehicle.id }, class:"btn btn-lg btn-danger w-100 my-3" %>
+                <%= button_to "Rent", user_can_rent_path , :method => :post, params: { id: vehicle.id }, class:"btn btn-lg btn-success w-100" %>
             </div>
         </div>
     <% end %>

@@ -3,10 +3,10 @@
 
     <ul id="nav-list">
         <% if user_signed_in? %>
-            <li><%= link_to "Active Agreement", root_path, class:"nav-items"%></li>
-            <li><%= link_to "Vehicle's", root_path, class:"nav-items"%></li>
+            <li><%= link_to "Active Agreement", active_agreement_path, class:"nav-items"%></li>
+            <li><%= link_to "Vehicle's", vehicles_path, class:"nav-items"%></li>
             <%# <li><%= link_to "Search Vehicle", root_path, class:"nav-items"</li>  try to do search & all vehicles in one page %>
-            <li><%= link_to "History", root_path, class:"nav-items"%></li>
+            <li><%= link_to "History", all_agreements_path, class:"nav-items"%></li>
             <li><%= link_to "My Profile", user_profile_path, class:"nav-items"%></li>
         <% else %>
             <li><%= link_to "Sign-In", new_user_session_path, class:"nav-items"%></li>

@@ -1,3 +1,13 @@
-STYLE THIS
-<h1><%= @user.name %></h1>
-<%= button_to "Sign Out", destroy_user_session_path, method: :delete , class:"nav-items"%>
+<% if !@user.nil? %>
+    <h1>Name: <%=@user.name%></h1>
+    <br/>
+    <h1>Email-ID: <%=@user.email%></h1>
+    <br/>
+    <h1>Phone Number: <%=@user.phone_no%></h1>
+    <br/>
+    <h1>Address: <%=@user.address%></h1>
+    <br/>
+    <h1>Total Number Of Rental Agreements: <%=@user.rental_agreements.count%></h1>
+    <br/>
+    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-danger w-100"%>
+<% end %>

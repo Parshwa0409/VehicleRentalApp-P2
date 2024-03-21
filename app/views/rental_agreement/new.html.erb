@@ -1,0 +1,44 @@
+<h1 class="text-center font-weight-bold">Rental Agreement & Payment Details</h1>
+
+<%= form_with  url: new_agreement_path, html: { class: "rental-agreement-form" } , data: { turbo: false }  do |form| %>
+
+    <% if @agreement.errors.any? %>
+        <% @agreement.errors.full_messages.each do |message|%>
+            <div class="alert alert-danger text-center my-3" >ERROR: <%= message%></div>
+        <%end%>
+    <% end %>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :start_date %>
+        <%= form.text_field :start_date, class:"form-control", placeholder: "DD-MM-YYYY" , required: true%>
+    </div>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :end_date %>
+        <%= form.text_field :end_date, class:"form-control", placeholder: "DD-MM-YYYY", required: true %>
+    </div>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :cardholder_name %>
+        <%= form.text_field :cardholder_name,  class:"form-control",  placeholder: "John Doe", required: true %>
+    </div>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :card_number %>
+        <%= form.text_field :card_number,  class:"form-control",  placeholder: "xxxx xxxx xxxx xxxx" , required: true%>
+    </div>
+
+    <div class="my-3 py-2 text-uppercase">
+        <%= form.label :cvv %>
+        <%= form.password_field :cvv,  class:"form-control",  placeholder: "***" , required: true%>
+    </div>
+
+    <div class="my-3 py-2 text-capitalize">
+        <%= form.label :expity_date , class:""%>
+            <%= form.text_field :expity_date, class:"form-control", placeholder: "MM/YYYY" , required: true%>
+    </div>
+
+    <div class="my-3">
+        <%= form.submit "Finish / Complete Agreement", class:"btn btn-primary btn-lg btn-block w-100"%>
+    </div>
+<% end %>

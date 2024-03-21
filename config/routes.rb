@@ -20,6 +20,21 @@ Rails.application.routes.draw do
   get "admin/search_customer", to:"admin#customers"
   post "admin/search_customer", to:"admin#search_customer"
 
+  # USER _ MODEL
+  get 'active_agreement', to:'user#active'
+  post 'end_active_agreement', to:'user#return_car'
+  get 'all_agreements', to: 'user#all_agreements'
+  post "user_can_rent", to: "user#can_rent"
+  
+  # VEHICLE _ MODEL
+  get "/vehicles", to: "vehicle#show"
+  get "/search_vehicle", to: "vehicle#show"
+  post "/search_vehicle", to: "vehicle#search_vehicle"
+  
+  # RENTAL AGREEMENT _ MODEL
+  get "new_agreement", to:"rental_agreement#new"
+  post "new_agreement", to:"rental_agreement#create"
+  get 'agreement_detail', to: 'rental_agreement#detail'
 
   root 'home#index'
 
