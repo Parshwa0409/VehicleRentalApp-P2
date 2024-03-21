@@ -1,4 +1,7 @@
 class RentalAgreementController < ApplicationController
+    # BEFORE ANY ACTION MAKE SURE THAT USER IS SIGNED-IN
+    before_action :authenticate_user!
+    
     # DISPLAY NEW - AGREEMENT FORM
     def new
         @agreement = RentalAgreement.new()

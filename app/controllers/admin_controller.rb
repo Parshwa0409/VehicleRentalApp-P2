@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
-before_action :authenticate_user!
+    # BEFORE ANY ACTION MAKE SURE THAT ADMIN IS SIGNED-IN
+    before_action :authenticate_user!
+    before_action :get_vehicle, only: [:update_vehicle, :edit_vehicle]
 
     def index
     end
@@ -32,6 +34,7 @@ before_action :authenticate_user!
     end 
 
     def new_vehicle
+        @vehicle = Vehicle.new
     end
 
     def create_vehicle
@@ -50,7 +53,6 @@ before_action :authenticate_user!
 
         if brand.empty? && model.empty?
             show_vehicles()
-            # redirect_to admin_vehicles_path
         elsif !brand.empty? && !model.empty?
             @all_vehicles =  Vehicle.where(brand:brand, model:model).paginate(page: params[:page])
         elsif !model.empty?
@@ -63,20 +65,17 @@ before_action :authenticate_user!
     end
 
     def edit_vehicle
-        session[:v_id] = params[:id]
     end
 
     def update_vehicle
-        vehicle_to_edit = Vehicle.find_by(id:session[:v_id])
-        parameters = get_vehicle_params()
-        if vehicle_to_edit.present?
-            vehicle_to_edit.update_column(:brand,parameters[:brand]) if parameters[:brand] !=""
-            vehicle_to_edit.update_column(:model,parameters[:model]) if parameters[:model] != ""
-            vehicle_to_edit.update_column(:year,parameters[:year]) if parameters[:year] !=""
-            vehicle_to_edit.update_column(:price_per_day,parameters[:price_per_day]) if parameters[:price_per_day] !=""
-            vehicle_to_edit.update_column(:brand_logo,parameters[:brand_logo]) if !parameters[:brand_logo].nil?
+        @vehicle.update(get_vehicle_params())
+
+        if @vehicle.save
+            redirect_to admin_vehicles_path
+        else
+            flash[:alert] = "ERROR IN UPDATION"
+            render :edit_vehicle
         end
-        redirect_to admin_vehicles_path
     end
 
     def destroy_vehicle
@@ -103,6 +102,10 @@ before_action :authenticate_user!
 
     def get_user_search_params
         return params.require(:search_customer).permit(:name, :email)
+    end
+
+    def get_vehicle
+        @vehicle = Vehicle.find_by(id: params[:id])
     end
 
 end

@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
         return Vehicle.find_by(id:vehicle_id)
     end
 
+    def set_vehicle(v_id)
+        
+    end
+
 end

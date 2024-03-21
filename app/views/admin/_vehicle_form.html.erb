@@ -1,4 +1,4 @@
-<%= form_with model: Vehicle, url: path, data: { turbo: false }  do |form| %>
+<%= form_for @vehicle, url: path, data: { turbo: false }  do |form| %>
     <div class="my-3 py-2 text-capitalize">
         <%= form.label :brand %>
         <%= form.text_field :brand, class:"form-control", placeholder:"Porsche"%>
