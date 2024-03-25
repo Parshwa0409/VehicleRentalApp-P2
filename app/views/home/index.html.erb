@@ -1,12 +1,41 @@
 <header>
-<h1>Vehicle Rental App</h1>
+<h1>Rent-Wheels</h1>
+<p>Luxury at Your Fingertips</p>
 <p>Rent the car of your dreams today!</p>
+<p>Rent the car for a day, week, month or even an year!</p>
+<br/>
 </header>
 
 <div class="main-content">
-    <h2>Welcome to our Vehicle Rental Service</h2>
-    <p>Explore our wide range of vehicles available for rent. We offer the best rates and convenient booking options.</p>
-    <button>Book Now</button>
+    <h3>Explore the Pinnacle of Luxury Travel</h3>
+    <p>Experience the thrill of the open road like never before with our curated selection of top-tier luxury vehicles. From sleek sports cars to spacious SUVs, we have the perfect ride for every occasion.</p>
+
+    <br/><hr/><br/>
+    <h3>Unmatched Selection</h3>
+    <p>Browse through our extensive fleet of meticulously maintained vehicles, handpicked to ensure the utmost in comfort, style, and performance. Whether you're planning a weekend getaway or a special event, we have the ideal car waiting for you.</p>
+
+    <br/><hr/><br/>
+    <h3>Competitive Pricing</h3>
+    <p>Indulge in luxury without breaking the bank. Our competitive pricing ensures that you can enjoy the finer things in life without compromise. With transparent pricing and no hidden fees, your dream car is within reach.</p>
+
+    <br/><hr/><br/>
+    <h3>Seamless Booking Process</h3>
+    <p>Booking your dream car has never been easier. Our intuitive app allows you to browse, reserve, and manage your bookings with just a few taps. Say goodbye to paperwork and hello to hassle-free rentals.</p>
+
+    <br/><hr/><br/>
+    <h3>Exceptional Service</h3>
+    <p>Our commitment to customer satisfaction sets us apart. From the moment you book to the final drop-off, our dedicated team is here to ensure your experience exceeds expectations. Enjoy peace of mind knowing that we're always here to assist you.</p>
+
+    <br/><hr/><br/>
+    <h3>Your Journey Starts Here</h3>
+    <p>Embark on your next adventure in style with [Your App Name]. Whether it's a business trip, a romantic getaway, or a leisurely drive, we're here to make your journey unforgettable. Book your luxury car today and elevate your travel experience.</p>
+
+    <% if user_signed_in? && !@user.is_admin? %>
+        <br/><hr/><br/>
+        <h3>Ready to Experience Luxury?</h3>
+        <%= button_to "Book Now", vehicles_path, method: :get , class: "btn btn-lg w-100 btn-success"%>
+    <% end %>
+    <br/><br/><br/>
 </div>
 
 <%# https://www.vecteezy.com/vector-art/8652608-car-rental-social-media-landing-page-template-flat-cartoon-background-vector-illustration %>
